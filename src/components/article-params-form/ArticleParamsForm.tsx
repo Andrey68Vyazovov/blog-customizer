@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { Select } from '../select/Select';
 import { RadioGroup } from '../radio-group/RadioGroup';
 import { Separator } from '../separator/Separator';
+import { Text } from '../text/Text';
 import { SideBarClose } from '../SideBarClose/SideBarClose';
 import {
 	ArticleStateType,
@@ -54,7 +55,7 @@ export const ArticleParamsForm = ({ props, onChange }: TArticleProps) => {
 		setIsOpen(!isOpen);
 	}
 
-	function submitForm(e: React.SyntheticEvent) {
+	function submitForm(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		onChange({
 			fontFamilyOption: state.fontFamilyOption,
@@ -82,7 +83,15 @@ export const ArticleParamsForm = ({ props, onChange }: TArticleProps) => {
 			<aside
 				className={clsx(styles.container, { [styles.container_open]: isOpen })}>
 				<form className={styles.form} onSubmit={submitForm}>
-					<h2 className={styles.title}>Задайте параметры</h2>
+					<Text
+						as={'h2'}
+						size={31}
+						weight={800}
+						align={'left'}
+						uppercase={true}
+						family='open-sans'>
+						Задайте параметры
+					</Text>
 					<Select
 						options={fontFamilyOptions}
 						selected={state.fontFamilyOption}
